@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+
+        *{
+      margin: 0;
+      padding: 0;
+    }
+
+   
+    .box1{
+      width: 1000px;
+      height: 30px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      position: relative;
+      border-radius: 5px;
+      background: #fff;
+      z-index: 0;
+    }
+    .box1 ul{
+      width: 100%;
+      height: 100%;
+      list-style:none; 
+    }
+
+        .box1 ul li{
+          float: left;
+          font-family: "微软雅黑";
+          font-size: 18px;
+          text-align: center;
+          line-height: 30px;
+          margin-left: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .box1 .box2{
+          width: 100px;
+          height: 30px;
+          z-index: -1;
+          border-radius: 5px;
+          background: skyblue;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+
+
+     
+		.djs{
+
+     	width: 600px;
+				margin: 100px auto;
+				color: gold;
+				font-size: 40px;
+				border: 1px solid red;
+				text-align: center;
+				display: block;
+			
+     } 
+
+     
+
+     img {
+            position: absolute;
+            top: 0;
+
+        }
+        #left {
+            left: 0;
+        }
+        #right {
+            right: 0;
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            vertical-align: middle;
+        }
+
+
+
+        body{
+              
+              background: url(imgs/bg1.jpg);
+             
+            
+            }
+            ul{
+              list-style: none; 
+            }
+            ul li{
+                   width: 80px;
+                    height: 50px;
+                    margin: 0px;
+                    float: right;
+            }
+            ul li img{
+              width: 80px;
+              height: 50px;
+              border: 2px solid red;      
+            } 
+
+/***********************************************jd***********************************************/
+.box001{
+    width: 2400px;
+    height: 1020px;
+    position: relative;
+    left: 300px;
+      top: 100px;
+
+  }
+    
+    .entry_item{
+      width: 390px;
+      height: 170px;
+      position: relative;
+      display:inline;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .entry_item2{
+      width: 390px;
+      height: 170px;
+      position: relative;
+      overflow: hidden;
+      margin-left: 500px;
+
+    }
+    .entry_bg{
+      height: 100%;
+      width: 36%;
+      background-color: #3b838c;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.9;
+      z-index: 1;
+    }
+    .entry_info{
+      padding-top: 45px;
+      width: 100px;
+      font-size: 14px;
+      margin: 0 auto;  /*在父盒子.entry_bg中居中*/
+      color: #fff;
+    }
+    .entry_info_tit{
+      font-size: 22px;
+      height: 40px;
+      line-height: 40px;
+      font-weight: 400;
+      font-family: 微软雅黑;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      text-align: center;
+    }
+    .entry_info_desc{
+      margin-top: 8px;
+      height: 32px;
+      line-height: 16px;
+    }
+    .entry_img{
+      width: 400px;
+      height: 170px;
+      border: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  			</style>
+  			<script type="text/javascript">
+         function $(id) { return document.getElementById(id);}
+          window.onload = function(){
+            var leftAdv = document.createElement("img");
+            leftAdv.setAttribute("src", "imgs/left.jpg");
+            leftAdv.setAttribute("id", "left");
+            document.body.appendChild(leftAdv);
+            var rightAdv = document.createElement("img");
+            rightAdv.setAttribute("src", "imgs/right.jpg");
+            rightAdv.setAttribute("id", "right");
+            document.body.appendChild(rightAdv);
+
+        setTimeout(function(){
+            $("left").style.display = "none";
+            $("right").style.display = "none";
+        }, 5000);
+     
+
+
+  				setInterval(function(){
+        			var nowTime = new Date();//获取到当前时间
+        			var endTime = new Date("2018-1-1 00:00:00");//创建时间节点对象
+        			var seconds = parseInt((endTime.getTime() - nowTime.getTime()) / 1000);//获取两个时间点的时间差
+        			var d = parseInt(seconds / 3600 / 24);//得到天数
+        			var h = parseInt(seconds / 3600 % 24);//得到小时
+        			var m = parseInt(seconds / 60 % 60);//得到分钟
+        			var s = parseInt(seconds % 60);//得到秒数s
+        			document.getElementById("djs").innerHTML = "距离2018还有" + d +"天" + h +"小时" + m + "分钟" + s + "秒";
+        		},1000);
+
+
+          var leader = 0;
+          var target = 0;
+          var current = 0;
+          setInterval(function(){
+                  leader = leader + (target - leader) / 10;
+                  $("sp").style.left = leader + "px";
+          }, 10);
+          var lis = $("uls").getElementsByTagName("li");
+          for(var i=0;i<lis.length;i++){
+               lis[i].onmouseover = function(){
+                target = this.offsetLeft;
+               }
+               lis[i].onmouseleave = function (){
+                target = current;
+               }
+               lis[i].onclick = function(){
+                current = this.offsetLeft; 
+               }
+      };
+
+
+
+      var text = document.getElementsByTagName("img");
+      for(var i=0; i<text.length; i++){
+        text[i].onclick = function(){
+                  document.body.style.backgroundImage = "url(" + this.src +")";  
+      }
+    };  
+
+      var img = document.getElementById("entryImg");
+      var img2 = document.getElementById("entryImg2");
+      var img3 = document.getElementById("entryImg3");
+      var img4 = document.getElementById("entryImg4");
+      var img5 = document.getElementById("entryImg5");
+      var img6 = document.getElementById("entryImg6");
+      var timer;
+      img.onmouseover = function(){
+        var that = this;
+        var left = 1;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 10){
+            that.style.left = "-" + left + "px";
+            left++;
+          }
+        }, 30);
+      }
+        img2.onmouseover = function(){
+        var that = this;
+        var left = 1;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 10){
+            that.style.left = "-" + left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img3.onmouseover = function(){
+        var that = this;
+        var left = 1;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 10){
+            that.style.left = "-" + left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img4.onmouseover = function(){
+        var that = this;
+        var left = 1;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 10){
+            that.style.left = "-" + left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img5.onmouseover = function(){
+        var that = this;
+        var left = 1;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 10){
+            that.style.left = "-" + left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img6.onmouseover = function(){
+        var that = this;
+        var left = 1;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 10){
+            that.style.left = "-" + left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      
+
+      img.onmouseleave = function(){
+        var that = this;
+        var left = -10;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 0){
+            that.style.left = left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img2.onmouseleave = function(){
+        var that = this;
+        var left = -10;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 0){
+            that.style.left = left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img3.onmouseleave = function(){
+        var that = this;
+        var left = -10;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 0){
+            that.style.left = left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img4.onmouseleave = function(){
+        var that = this;
+        var left = -10;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 0){
+            that.style.left = left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img5.onmouseleave = function(){
+        var that = this;
+        var left = -10;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 0){
+            that.style.left = left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      img6.onmouseleave = function(){
+        var that = this;
+        var left = -10;
+        if(timer){
+          clearInterval(timer);
+        }
+        timer = setInterval(function(){
+          if(left <= 0){
+            that.style.left = left + "px";
+            left++;
+          }
+        }, 30);
+      }
+      
+
+}
+  			</script>
+    </head>
+    <body>
+   
+   		
+   			<div class="container">
+   				<a href="test1.html"  target="_blank" class="link"  
+   					style="color: rgb(0, 0, 0);">返回小米商城 &gt;</a>
+   					</div>
+
+   		<div class="djs">
+ 			<p id="djs" class="spread"></p>
+ 	
+ 	</div>
+   			
+   				<div id="box" class="box1">
+    <ul id="uls">
+      <li>模块</li>
+      <li>模块</li>
+      <li>模块</li>
+      <li>模块</li>
+      <li>模块</li>
+      <li>模块</li>
+      <li>模块</li>
+      <li>模块</li>
+    </ul>
+    <span class="box2" id="sp"></span>
+  </div>
+   				
+          <ul>
+    <li><img src="imgs/1.jpg"></li>
+    <li><img src="imgs/bg2.jpg"></li>
+    
+  </ul>
+
+
+
+
+<div class="box001">
+  <div class="entry_item">
+    <div class="entry_bg">
+      <div class="entry_info">
+        <h4 class="entry_info_tit">智能生活</h4>
+        <p class="entry_info_desc">智能潮货，嗨购不停</p>
+      </div>
+    </div>
+    <img src="imgs/jd1.jpg" alt="" class="entry_img" id="entryImg">
+  </div>
+  <div class="entry_item2">
+    <div class="entry_bg">
+      <div class="entry_info">
+        <h4 class="entry_info_tit">智能生活</h4>
+        <p class="entry_info_desc">智能潮货，嗨购不停</p>
+      </div>
+    </div>
+    <img src="imgs/jd2.jpg" alt="" class="entry_img" id="entryImg2">
+  </div>
+  <div class="entry_item" >
+    <div class="entry_bg">
+      <div class="entry_info">
+        <h4 class="entry_info_tit">智能生活</h4>
+        <p class="entry_info_desc">智能潮货，嗨购不停</p>
+      </div>
+    </div>
+    <img src="imgs/jd3.jpg" alt="" class="entry_img" id="entryImg3">
+  </div>
+  <div class="entry_item2">
+    <div class="entry_bg">
+      <div class="entry_info">
+        <h4 class="entry_info_tit">智能生活</h4>
+        <p class="entry_info_desc">智能潮货，嗨购不停</p>
+      </div>
+    </div>
+    <img src="imgs/jd4.jpg" alt="" class="entry_img" id="entryImg4">
+  </div>
+  <div class="entry_item">
+    <div class="entry_bg">
+      <div class="entry_info">
+        <h4 class="entry_info_tit">智能生活</h4>
+        <p class="entry_info_desc">智能潮货，嗨购不停</p>
+      </div>
+    </div>
+    <img src="imgs/jd5.jpg" alt="" class="entry_img" id="entryImg5">
+  </div>
+  <div class="entry_item2">
+    <div class="entry_bg">
+      <div class="entry_info">
+        <h4 class="entry_info_tit">智能生活</h4>
+        <p class="entry_info_desc">智能潮货，嗨购不停</p>
+      </div>
+    </div>
+    <img src="imgs/jd6.jpg" alt="" class="entry_img" id="entryImg6">
+  </div>
+  </div>
+    </body>
+</html>

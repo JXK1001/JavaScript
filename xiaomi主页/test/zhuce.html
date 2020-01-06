@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style type="text/css">
+            .box{
+                width: 700px;
+                padding: 20px;
+                border: 1px solid #aaa;
+                border-radius: 3px;
+                margin: 100px auto;
+            }
+            .box select{
+                width: 100px;
+            }
+            .box label{
+                margin:0 20px;
+            }
+        </style>
+            <script type="text/javascript">
+            var provs = [{"id":"01","pName":"河南省"},{"id":"02","pName":"河北省"},{"id":"03","pName":"山西省"},{"id":"04","pName":"山东省"},{"id":"05","pName":"四川省"}];
+            var citys = [{"id":"001","cName":"安阳市","pId":"01"},{"id":"002","cName":"郑州市","pId":"01"},{"id":"003","cName":"新乡市","pId":"01"},{"id":"004","cName":"石家庄","pId":"02"},{"id":"005","cName":"邯郸","pId":"02"},{"id":"006","cName":"大同","pId":"03"},{"id":"007","cName":"太原","pId":"03"},{"id":"008","cName":"济南","pId":"04"},{"id":"009","cName":"青岛市","pId":"04"},{"id":"010","cName":"成都","pId":"05"},{"id":"011","cName":"绵阳市","pId":"05"}];
+            function $(id){
+                return document.getElementById(id);
+            }
+            window.onload = function(){
+                 for (var i=0;i<provs.length;i++){
+                    var opt= document.createElement("option");
+                    opt.innerHTML=provs[i].pName;
+                    opt.value=provs[i].id;
+                    $("province").appendChild(opt);
+                 }
+                 
+                 $("province").onchange=function(){
+                    var id =this.value;
+                    $("city").options.length=0;
+                    for (var i=0;i<citys.length;i++){
+                        if (citys[i].pId == id){
+                            var opt =document.createElement("option");
+                            opt.innerHTML=citys[i].cName;
+                            opt.value=citys[i].id;
+                            $("city").appendChild(opt);
+                        }
+                    }
+                 }
+                
+            }
+        </script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="images/favicon.ico">
+    <div class="box">
+        <div>
+            <!--logo-->
+            <div class="log-box">
+                <img src="imgs/logo-footer.png">
+            </div>
+            <!--头部-->
+            <div class="title-item">
+                <h4>注册小米帐号</h4>
+            </div>
+            <!--内容-->
+            <main>
+             
+                    <div class="box">
+            请选择：
+            <div>
+            <select id="province">
+                <option value="00">----请选择----</option>
+            </select><label for="provice">省</label>
+            </div>
+            <div>
+            <select id="city">
+                <option value="000">----请选择----</option>
+            </select><label for="provice">市</label>
+            </div>
+        </div>
+                        <h4 class="tel-title">手机号码</h4>
+                       
+                            <select>
+                                <option>+86</option>
+                            </select>
+                            
+                                <input type="tel" placeholder="请输入手机号码" class="tel">
+                          
+                              
+                    <h4>账号</h4> 
+                    <div>
+                            <input type="text" placeholder="请输入账号" class="Land account-land">
+                       </div>
+                       
+                        <h4>密码</h4>
+                        <div class="Graphical-verification">
+                            <input type="password" placeholder="请输入密码" class="Land pwd">
+                        </div>
+                      <button type="submit" form="nameform" value="Submit">提交</button>
+                    </form>
+               
+            </main>
+       
+    </div>
+
+
+
+</body>
+</html>
